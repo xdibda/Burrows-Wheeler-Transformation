@@ -126,8 +126,8 @@ int main(int argc, char *argv[]) {
  */
 void printResults(tBWTED bwted, FILE* log) {
     fprintf(log, "login = %s\n", "xdibda00");
-    fprintf(log, "uncodedSize = %" PRId64 "\n", bwted.uncodedSize);
-    fprintf(log, "codedSize = %" PRId64 "\n", bwted.codedSize);
+    fprintf(log, "uncodedSize = %d\n", bwted.uncodedSize);
+    fprintf(log, "codedSize = %d\n", bwted.codedSize);
 }
 
 /**
@@ -136,7 +136,6 @@ void printResults(tBWTED bwted, FILE* log) {
 void compressFile(FILE* input, FILE* output, FILE* log) {
     tBWTED bwted;
 
-    printf("Going to print results?\n");
     if (BWTEncoding(&bwted, input, output) != 1 && arguments.logSet) {
         printResults(bwted, log);
     }
@@ -164,12 +163,6 @@ void openFiles(FILE **input, FILE **output, FILE **log) {
 FILE *openFile(const char *fileName, const char *fileArguments) {
     FILE *file = fopen(fileName, fileArguments);
 
-    fseek(file, 0L, SEEK_END);
-    int size = (int) ftell(file);
-    fseek(file, 0L, SEEK_SET);
-    std::cout << "Naser si: " << size << endl;
-
-
     if (!file) {
         counter++;
         return NULL;
@@ -183,7 +176,7 @@ FILE *openFile(const char *fileName, const char *fileArguments) {
  */
 bool filesOpenedCorrectly() {
     return counter == 0;
-};
+}
 
 /**
  * Closing files

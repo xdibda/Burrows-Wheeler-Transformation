@@ -7,13 +7,15 @@
 
 #include <vector>
 #include <deque>
+#include <string>
+#include <algorithm>
 
 using namespace std;
 
 class BWT {
 public:
     void encode(deque<char> source, vector<char> *result);
-    void decode(vector<char> source, deque<char> *result);
+    void decode(string source, string *result);
 
     vector<char> getResultFromPermutation(vector<deque<char>> files);
     deque<char> makeShift(deque<char> *file);

@@ -2,6 +2,7 @@
 // Created by Lukáš Dibďák on 03.05.17.
 //
 
+#include <iostream>
 #include "BWT.h"
 
 void BWT::encode(deque<char> source, vector<char> *result) {
@@ -9,8 +10,31 @@ void BWT::encode(deque<char> source, vector<char> *result) {
     *result = getResultFromPermutation(permutations);
 }
 
-void BWT::decode(vector<char> source, deque<char> *result) {
+void BWT::decode(string source, string *result) {
+    deque<string> permutations;
 
+    deque<char> original;
+    for (int i = 0; i < (int) source.size(); i++) {
+        string str;
+        original.push_back(source[i]);
+        permutations.push_back(str);
+    }
+
+    for (int j = 0; j < (int) source.size(); ++j) {
+        for (int i = 0; i < (int) source.size(); ++i) {
+            string hm = permutations[i];
+            string final;
+            final += original[i] + hm;
+            permutations[i] = final;
+        }
+        sort(permutations.begin(), permutations.end());
+    }
+
+    for (int i = 0; i < (int) permutations.size(); i++) {
+        if (permutations[i].back() == '|') {
+            *result = permutations[i];
+        }
+    }
 }
 
 vector<char> BWT::getResultFromPermutation(vector<deque<char>> files) {

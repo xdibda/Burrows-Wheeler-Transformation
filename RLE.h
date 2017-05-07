@@ -7,13 +7,14 @@
 
 #include <deque>
 #include <stdlib.h>
+#include <string>
 
 using namespace std;
 
 class RLE {
 public:
-    void encode(deque<int64_t> source, deque<int64_t > *result);
-    void decode(deque<int64_t > source, deque<int64_t> *result);
+    void encode(deque<int> source, deque<string> *result);
+    void decode(deque<char> source, deque<int> *result);
 };
 
 

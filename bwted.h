@@ -19,8 +19,8 @@ using namespace std;
  * compress record
  */
 typedef struct {
-    int64_t uncodedSize;
-    int64_t codedSize;
+    int uncodedSize;
+    int codedSize;
 } tBWTED;
 
 /**
@@ -40,7 +40,6 @@ void getFileData(FILE* inputFile, deque<char> *result);
 
 int getFileSize(FILE* inputFile);
 
-const char* generateStringAsResult(deque<char> source);
-const char* generateStringAsResult(deque<int64_t> source);
+string generateStringAsResult(deque<string> source);
 
 #endif

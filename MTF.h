@@ -15,8 +15,8 @@ public:
     void initSymbolTable(deque<char> *symbolTable);
     void updateSymbolTable(deque<char> *symbolTable, int position);
 
-    void encode(vector<char> source, deque<int64_t> *result);
-    void decode(deque<int64_t> source, vector<char> *result);
+    void encode(vector<char> source, deque<int> *result);
+    void decode(deque<int> source, string *result);
 };
 
 
